@@ -20,11 +20,17 @@ import {
   ChevronLeft,
   Instagram,
   FileText,
-  BadgeCheck
+  BadgeCheck,
+  Mail,
+  Calculator,
+  Compass,
+  Building2,
+  Calendar
 } from 'lucide-react';
 import { Property, PROPERTIES_DATA } from '../data/properties';
 import { PropertyCard } from '../components/PropertyCard';
 import { TESTIMONIALS_DATA } from '../data/testimonials';
+import { AGENTS_DATA } from '../data/agents';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -54,18 +60,21 @@ export const HomePage: React.FC<HomePageProps> = ({
   const heroSlides = [
     {
       url: 'https://static.wixstatic.com/media/ca7abb_08da1a03996444938360ffb130aabf1c~mv2.jpg',
-      title: 'Luxury Mint Homes Line',
-      subtitle: 'Find Your Perfect Property Across Long Island & Queens'
+      tag: 'Luxury Mint Homes Line',
+      title: 'Find Your Perfect Property in Long Island & Queens',
+      subtitle: 'Experience, legal diligence, and personalized fiduciary service since 2007'
     },
     {
       url: 'https://static.wixstatic.com/media/ca7abb_bcb028e23298404d99de22818902fe56~mv2.webp',
-      title: 'Ready to Get Your Keys',
-      subtitle: 'Personalized Service, Strong Relationships, Exceptional Results'
+      tag: 'Ready to Get Your Keys',
+      title: 'Making Homeownership Seamless and Stress-Free',
+      subtitle: 'Over 15 years paralegal background securing optimal terms and clean title resolution'
     },
     {
       url: 'https://static.wixstatic.com/media/ca7abb_51d1398575af48c991d9f11400c5869d~mv2.jpg',
-      title: 'Premier Real Estate Brokerage',
-      subtitle: 'Expert Legal Insight & Fiduciary Negotiation Since 2007'
+      tag: 'Valley Stream Headquarters',
+      title: 'Trusted Real Estate Guidance You Can Count On',
+      subtitle: 'From financial advisory to mortgage pre-approval and successful closings'
     }
   ];
 
@@ -100,45 +109,46 @@ export const HomePage: React.FC<HomePageProps> = ({
   };
 
   const featuredProperties = PROPERTIES_DATA.slice(0, 3);
-  const featuredTestimonial = TESTIMONIALS_DATA[1]; // Karina & Judit review
+  const featuredTestimonials = TESTIMONIALS_DATA.slice(0, 3);
+  const ceo = AGENTS_DATA.find((a) => a.isLeadership) || AGENTS_DATA[0];
 
   // Real Instagram / Listing updates from live site
   const liveUpdates = [
     {
       id: 'ig-1',
       tag: 'New Listing Alert',
-      title: 'Fully Renovated Restaurant & Commercial Property',
-      caption: 'Spacious & fully renovated restaurant with large bar area, huge basement for storage, all brand-new equipment included, prime location on main road with high visibility.',
+      title: 'Spacious & Fully Renovated Restaurant',
+      caption: 'Large bar area, huge basement for storage, all brand-new equipment included. Prime location on main road with high traffic and visibility.',
       contacts: 'Nataly Fuentes: (929) 282-7753 | Karina Prudencio: (516) 312-4467',
       image: 'https://static.wixstatic.com/media/ca7abb_d83fed79882f4bff969bcc294d5f2b95~mv2.jpeg',
-      date: 'Recent Update'
+      badge: 'Commercial Prime'
     },
     {
       id: 'ig-2',
       tag: 'Open House',
-      title: 'Well-Maintained 4-Bedroom Cape',
-      caption: 'Discover this well-maintained 4-bedroom, 2-bath Cape offering comfort, versatility, and plenty of space inside and out. Enjoy the open-concept layout, dedicated office space, and private yard.',
+      title: 'Well-Maintained 4-Bedroom Cape in Valley Stream',
+      caption: 'Offering comfort, versatility, and plenty of space inside and out. Enjoy the open-concept layout, dedicated office space, and private yard.',
       contacts: 'Mint Homes Advisory Desk: (516) 900-5542',
-      image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80',
-      date: 'Valley Stream, NY'
+      image: 'https://static.wixstatic.com/media/ca7abb_51d1398575af48c991d9f11400c5869d~mv2.jpg',
+      badge: 'Open House Tour'
     },
     {
       id: 'ig-3',
       tag: 'Just Sold',
       title: 'Another Month of Successful Closings',
-      caption: 'Another month of successful closings and congratulations to the new homeowners. Thinking about selling or buying your home? Let us guide you with expertise, dedication, and results.',
+      caption: 'Congratulations to the new homeowners. Thinking about selling or buying your home? Let us guide you with expertise, dedication, and results.',
       contacts: 'Direct Broker Line: (516) 312-4467',
-      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
-      date: 'Closed in August'
+      image: 'https://static.wixstatic.com/media/ca7abb_08da1a03996444938360ffb130aabf1c~mv2.jpg',
+      badge: 'Successfully Closed'
     },
     {
       id: 'ig-4',
       tag: 'Property Advisory',
-      title: 'Investing in Quality Work',
-      caption: 'Cheap today does not always mean economical tomorrow. When it comes to your property, cutting corners on repairs may seem like a quick way to save money, but in reality, quality work protects your investment.',
+      title: 'Investing in Quality Work for Long-Term Value',
+      caption: 'Cheap today does not always mean economical tomorrow. When it comes to your property, cutting corners on repairs may seem like a quick way to save money, but quality work protects your investment.',
       contacts: 'Karina Prudencio, Broker: (516) 312-4467',
-      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
-      date: 'Client Guide'
+      image: 'https://static.wixstatic.com/media/ca7abb_bcb028e23298404d99de22818902fe56~mv2.webp',
+      badge: 'Fiduciary Tip'
     }
   ];
 
@@ -159,7 +169,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               alt={slide.title}
               className="w-full h-full object-cover object-center scale-102 transition-transform duration-6000 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-950/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/60" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
           </div>
         ))}
@@ -197,11 +207,9 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Hero Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 flex flex-col items-center text-center">
           <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-widest text-amber-400 mb-4 bg-slate-900/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-amber-500/30">
-            <span>Valley Stream</span>
+            <span>{heroSlides[activeSlide].tag}</span>
             <span aria-hidden="true">·</span>
-            <span>Nassau County</span>
-            <span aria-hidden="true">·</span>
-            <span>Queens</span>
+            <span>Valley Stream, NY</span>
           </div>
 
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-4xl leading-[1.15] mb-4">
@@ -249,14 +257,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                     className="w-full bg-stone-50 border border-slate-300 text-slate-900 text-sm rounded-lg px-3 py-2.5 focus:ring-2 focus:ring-amber-500 focus:outline-none cursor-pointer"
                   >
                     <option value="All">Any Price</option>
-                    <option value="Under $750k">Under $750,000</option>
-                    <option value="$750k to $1M">$750,000 to $1,000,000</option>
-                    <option value="$1M to $1.5M">$1,000,000 to $1,500,000</option>
-                    <option value="$1.5M+">$1,500,000 and Above</option>
+                    <option value="under-700k">Under $700,000</option>
+                    <option value="700k-1m">$700,000 - $1,000,000</option>
+                    <option value="1m-1.5m">$1,000,000 - $1,500,000</option>
+                    <option value="over-1.5m">$1,500,000+</option>
                   </select>
                 </div>
 
-                {/* Property Type Filter */}
+                {/* Property Type */}
                 <div>
                   <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center gap-1">
                     <Home className="w-3.5 h-3.5 text-amber-600" />
@@ -268,14 +276,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                     className="w-full bg-stone-50 border border-slate-300 text-slate-900 text-sm rounded-lg px-3 py-2.5 focus:ring-2 focus:ring-amber-500 focus:outline-none cursor-pointer"
                   >
                     <option value="All">All Types</option>
-                    <option value="Single Family">Single Family Home</option>
-                    <option value="Multi-Family">Multi Family Residence</option>
-                    <option value="Townhouse">Townhouse / Condo</option>
+                    <option value="Single Family">Single Family</option>
+                    <option value="Multi-Family">Multi-Family</option>
+                    <option value="Condo">Condo / Co-op</option>
                     <option value="Commercial">Commercial Property</option>
                   </select>
                 </div>
 
-                {/* Bedrooms Filter */}
+                {/* Bedrooms */}
                 <div>
                   <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center gap-1">
                     <Bed className="w-3.5 h-3.5 text-amber-600" />
@@ -287,27 +295,34 @@ export const HomePage: React.FC<HomePageProps> = ({
                     className="w-full bg-stone-50 border border-slate-300 text-slate-900 text-sm rounded-lg px-3 py-2.5 focus:ring-2 focus:ring-amber-500 focus:outline-none cursor-pointer"
                   >
                     <option value="All">Any Bedrooms</option>
-                    <option value="3+ Beds">3+ Bedrooms</option>
-                    <option value="4+ Beds">4+ Bedrooms</option>
-                    <option value="5+ Beds">5+ Bedrooms</option>
+                    <option value="3">3+ Bedrooms</option>
+                    <option value="4">4+ Bedrooms</option>
+                    <option value="5">5+ Bedrooms</option>
                   </select>
                 </div>
               </div>
 
-              {/* Submit Action */}
+              {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t border-slate-100">
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>Licensed Real Estate Brokerage in Valley Stream, NY</span>
+                <div className="text-xs text-slate-500 flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <span>NYS Fair Housing & MLS Compliant</span>
                 </div>
-
                 <div className="flex items-center gap-2 w-full sm:w-auto">
                   <button
+                    type="button"
+                    onClick={onOpenCalculator}
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg border border-slate-300 text-slate-700 hover:bg-stone-100 text-xs font-semibold cursor-pointer"
+                  >
+                    <Calculator className="w-3.5 h-3.5 text-slate-500" />
+                    <span>Mortgage Calc</span>
+                  </button>
+                  <button
                     type="submit"
-                    className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-semibold text-sm px-6 py-2.5 rounded-lg transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer border border-slate-800"
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider transition-all shadow cursor-pointer"
                   >
                     <Search className="w-4 h-4 text-amber-400" />
-                    <span>Search Available Properties</span>
+                    <span>Search Listings</span>
                   </button>
                 </div>
               </div>
@@ -316,223 +331,254 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 2. REAL CEO INTRODUCTION SECTION */}
+      {/* 2. CEO PROFILE SECTION (READY TO GET YOUR KEYS) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-200/90 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Real Photo */}
+          {/* CEO Real Photo */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md aspect-4/5 rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-slate-950">
+            <div className="relative w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-950 aspect-4/5">
               <img
-                src="https://static.wixstatic.com/media/ca7abb_2ad8a45fc5d34b62b2ae0cc3a43929eb~mv2.png"
+                src={ceo.photo}
                 alt="Karina Prudencio, Mint Homes CEO"
                 className="w-full h-full object-cover object-top"
               />
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent p-5 text-white">
-                <div className="font-display font-bold text-xl">Karina Prudencio</div>
-                <div className="text-xs text-amber-400 font-medium">Mint Homes CEO and Principal Broker</div>
-                <div className="text-[11px] text-slate-300 pt-0.5">NYS Licensed Real Estate Broker</div>
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-5 text-white">
+                <div className="font-display font-bold text-2xl">{ceo.name}</div>
+                <div className="text-sm text-amber-400 font-semibold">{ceo.role}</div>
+                <div className="text-xs text-slate-300 pt-1 font-mono">{ceo.licenseNumber}</div>
               </div>
             </div>
           </div>
 
-          {/* Real Bio Content */}
+          {/* CEO Introduction Text & Credentials */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded border border-amber-200">
-              <BadgeCheck className="w-3.5 h-3.5 text-amber-600" />
-              <span>Leadership and Legal Advisory</span>
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200">
+              <BadgeCheck className="w-4 h-4 text-amber-600" />
+              <span>Ready to Get Your Keys</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-slate-950 leading-tight">
-              Ready to Get Your Keys with Confidence
+              Meet Karina Prudencio
             </h2>
 
+            {/* Exact Live Bio Text */}
             <div className="space-y-4 text-slate-700 text-base leading-relaxed">
               <p className="font-medium text-slate-900 text-lg">
-                "I'm Karina Prudencio, a real estate expert with over 15 years as a paralegal and a successful career in real estate since 2007. My legal background helps me navigate complex deals, resolve title issues, and secure the best terms for you."
+                &quot;I&apos;m Karina Prudencio, a real estate expert with over 15 years as a paralegal and a successful career in real estate since 2007. My legal background helps me navigate complex deals, resolve title issues, and secure the best terms for you.&quot;
               </p>
               <p>
-                "Whether you're a first-time buyer or an investor, I'll make your real estate journey smooth and stress-free. Let's find your perfect home with Mint Homes!"
+                &quot;Whether you&apos;re a first-time buyer or an investor, I&apos;ll make your real estate journey smooth and stress-free. Let&apos;s find your perfect home with Mint Homes!&quot;
               </p>
             </div>
 
-            {/* Direct Contact Bar */}
-            <div className="p-4 bg-stone-50 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-4 text-xs">
-              <div className="space-y-1">
-                <div className="text-slate-500 uppercase tracking-wider font-semibold">Direct Broker Inquiries</div>
-                <div className="flex items-center gap-3">
-                  <a href="tel:5163124467" className="font-semibold text-slate-900 hover:text-amber-700 flex items-center gap-1.5">
-                    <Phone className="w-3.5 h-3.5 text-amber-600" />
-                    <span>(516) 312-4467</span>
-                  </a>
-                  <span className="text-slate-300">|</span>
-                  <a href="mailto:karina@minthomesli.com" className="font-semibold text-slate-900 hover:text-amber-700">
-                    karina@minthomesli.com
-                  </a>
+            {/* Core Competencies Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="p-4 bg-stone-50 rounded-xl border border-slate-200 space-y-1">
+                <div className="font-semibold text-slate-900 text-xs flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-amber-700" />
+                  <span>15+ Years Legal Paralegal Depth</span>
                 </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Resolving encumbrances, title defects, and deed issues before they delay your closing.
+                </p>
               </div>
 
+              <div className="p-4 bg-stone-50 rounded-xl border border-slate-200 space-y-1">
+                <div className="font-semibold text-slate-900 text-xs flex items-center gap-1.5">
+                  <TrendingUp className="w-4 h-4 text-amber-700" />
+                  <span>17+ Years Licensed Real Estate Record</span>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Trusted negotiator securing optimal terms for residential buyers, sellers, and investors.
+                </p>
+              </div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
-                onClick={() => onNavigate('about')}
-                className="bg-slate-950 hover:bg-slate-800 text-white font-semibold px-4 py-2 rounded-lg text-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                onClick={onOpenConsultation}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm tracking-wide transition-all shadow cursor-pointer"
               >
-                <span>Read Full Biography</span>
-                <ChevronRight className="w-3.5 h-3.5 text-amber-400" />
+                <span>Book Free Consultation</span>
+                <ChevronRight className="w-4 h-4 text-amber-400" />
               </button>
+              <a
+                href="tel:5163124467"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-800 font-semibold text-sm transition-colors"
+              >
+                <Phone className="w-4 h-4 text-amber-700" />
+                <span>Direct: (516) 312-4467</span>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. REAL PHILOSOPHY SECTION */}
+      {/* 3. THREE CORE SERVICES (CAN WE DO FOR YOU?) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-950 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 relative overflow-hidden">
-          <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-400 bg-slate-900 px-3 py-1 rounded border border-amber-500/30 inline-block">
-              Our Brokerage Philosophy
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white leading-snug">
-              "Buying or selling a home is a life-changing experience, and we're here to make it seamless."
-            </h2>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Our expert team provides personalized service, builds strong relationships, and works tirelessly to help you achieve your real estate goals.
-            </p>
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-50 border border-amber-200">
+            <span>What We Do</span>
           </div>
-        </div>
-      </section>
-
-      {/* 4. REAL THREE SERVICES SECTION WITH REAL LIVE IMAGES */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded border border-amber-200 inline-block">
-            Tailored Real Estate Solutions
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-slate-950">
-            Comprehensive Real Estate Services
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-950 uppercase">
+            Can We Do For You?
           </h2>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            Delivering end to end support through licensed real estate advisory, lending partner coordination, and diligent closing execution.
+          <div className="w-16 h-1 bg-amber-500 mx-auto rounded-full" />
+          
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal pt-2">
+            Buying or selling a home is a life-changing experience, and we&apos;re here to make it seamless. Our expert team provides personalized service, builds strong relationships, and works tirelessly to help you achieve your real estate goals.
           </p>
         </div>
 
+        {/* 3 Interactive Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Service 1: Financial Advisory */}
-          <div className="group bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div className="aspect-16/10 overflow-hidden bg-slate-100 relative">
-                <img
-                  src="https://static.wixstatic.com/media/ca7abb_14532616e36247b182055f39d48c46dd~mv2.jpeg"
-                  alt="Financial advisory services"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded">
-                  Service 01
-                </div>
+          {/* Card 1: Financial Advisory */}
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
+                <Landmark className="w-7 h-7" />
               </div>
-              <div className="p-6 space-y-3">
-                <h3 className="font-display text-xl font-bold text-slate-950">
-                  Financial Advisory
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Navigating real estate transactions requires sound financial structuring. We connect buyers and investors with trusted consultants to analyze loan options, calculate true costs, and plan for long-term equity growth.
-                </p>
-              </div>
+              <h3 className="font-display text-2xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors">
+                Financial Advisory
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Strategic financial planning for your real estate journey. Understand purchasing capacity, market trends, tax assessments, and equity growth with clear, fiduciary guidance.
+              </p>
+              <ul className="space-y-2 pt-2 text-xs text-slate-700">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Market valuation & pricing analysis</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Closing costs & budget transparency</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Investment ROI assessments</span>
+                </li>
+              </ul>
             </div>
-            <div className="p-6 pt-0">
+            <div className="pt-6 mt-6 border-t border-slate-100">
               <button
                 onClick={onOpenConsultation}
-                className="w-full bg-slate-950 hover:bg-slate-900 text-white font-semibold text-xs py-2.5 rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-stone-100 hover:bg-slate-900 hover:text-white text-slate-900 text-xs font-bold transition-all cursor-pointer"
               >
-                <span>Request Financial Consultation</span>
-                <ChevronRight className="w-3.5 h-3.5 text-amber-400" />
+                <span>Start Now</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
 
-          {/* Service 2: Pre-Approval */}
-          <div className="group bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div className="aspect-16/10 overflow-hidden bg-slate-100 relative">
-                <img
-                  src="https://static.wixstatic.com/media/ca7abb_75e7c573c5af4842b79aba7609fa5279~mv2.jpeg"
-                  alt="Mortgage pre-approval guidance"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded">
-                  Service 02
-                </div>
-              </div>
-              <div className="p-6 space-y-3">
-                <h3 className="font-display text-xl font-bold text-slate-950">
-                  Pre-Approval Guidance
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Getting pre-approved gives you critical leverage in competitive Long Island bidding. We guide you through essential documentation (W-2s, pay stubs, bank statements) to streamline verification with reputable mortgage lenders.
-                </p>
-              </div>
+          {/* Card 2: Pre-Approved */}
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+            <div className="absolute top-0 right-0 bg-amber-400 text-slate-950 font-bold text-[10px] uppercase tracking-wider px-3 py-1 rounded-bl-lg">
+              Essential First Step
             </div>
-            <div className="p-6 pt-0">
+            <div className="space-y-4">
+              <div className="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
+                <KeyRound className="w-7 h-7" />
+              </div>
+              <h3 className="font-display text-2xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors">
+                Get Pre-Approved
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Connect with reputable mortgage partners to secure a verified pre-approval letter. Present stronger, winning offers with competitive terms in fast-moving New York markets.
+              </p>
+              <ul className="space-y-2 pt-2 text-xs text-slate-700">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Documentation checklist support</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Conventional, FHA & VA lender connections</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Accurate monthly payment estimation</span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-2">
               <button
                 onClick={onOpenCalculator}
-                className="w-full bg-slate-950 hover:bg-slate-900 text-white font-semibold text-xs py-2.5 rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-stone-50 text-xs font-semibold cursor-pointer"
               >
-                <span>Calculate Mortgage Payment</span>
-                <ChevronRight className="w-3.5 h-3.5 text-amber-400" />
+                <Calculator className="w-3.5 h-3.5 text-amber-700" />
+                <span>Calculator</span>
+              </button>
+              <button
+                onClick={onOpenConsultation}
+                className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all cursor-pointer"
+              >
+                <span>Start Now</span>
+                <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
               </button>
             </div>
           </div>
 
-          {/* Service 3: Sell or Buy Your Home */}
-          <div className="group bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div className="aspect-16/10 overflow-hidden bg-slate-100 relative">
-                <img
-                  src="https://static.wixstatic.com/media/3518fe_fae33eb2adc047af8f79d3a0141c88c5~mv2.jpeg"
-                  alt="Sell or buy your home"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded">
-                  Service 03
-                </div>
+          {/* Card 3: Sell or Buy Your Home */}
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
+                <Home className="w-7 h-7" />
               </div>
-              <div className="p-6 space-y-3">
-                <h3 className="font-display text-xl font-bold text-slate-950">
-                  Sell or Buy Your Home
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Whether selling your residence for top dollar or locating your dream property, our licensed team protects your fiduciary interests from initial market evaluation through contract signing and title closing.
-                </p>
-              </div>
+              <h3 className="font-display text-2xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors">
+                Sell or Buy Your Home
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Full-service brokerage representation from first viewing or listing presentation through closing. Expert negotiation, contract review, and proactive coordination at every step.
+              </p>
+              <ul className="space-y-2 pt-2 text-xs text-slate-700">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>High-visibility multi-platform marketing</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Personalized tour & private open house hosting</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Guaranteed service standard compliance</span>
+                </li>
+              </ul>
             </div>
-            <div className="p-6 pt-0">
+            <div className="pt-6 mt-6 border-t border-slate-100">
               <button
                 onClick={() => onNavigate('properties')}
-                className="w-full bg-slate-950 hover:bg-slate-900 text-white font-semibold text-xs py-2.5 rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all cursor-pointer"
               >
-                <span>Browse Long Island Listings</span>
-                <ChevronRight className="w-3.5 h-3.5 text-amber-400" />
+                <span>Explore Properties</span>
+                <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. FEATURED LISTINGS PREVIEW */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      {/* 4. FEATURED REAL PROPERTIES PREVIEW */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded border border-amber-200 inline-block mb-2">
-              Featured Opportunities
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-slate-950">
-              Curated Long Island Properties
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-50 border border-amber-200 mb-2">
+              <span>Curated Selection</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-950">
+              Featured Properties
             </h2>
+            <p className="text-sm text-slate-600 mt-1">
+              Top residential and commercial properties available across Long Island and Queens
+            </p>
           </div>
           <button
             onClick={() => onNavigate('properties')}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-amber-800 hover:text-amber-900 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-sm font-bold text-amber-800 hover:text-amber-900 cursor-pointer"
           >
             <span>View All Properties</span>
-            <ArrowRight className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
@@ -549,95 +595,176 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 6. REDESIGNED INSTAGRAM / LIVE PROPERTY UPDATES AS CLEAN CARDS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 pb-4">
+      {/* 5. REAL INSTAGRAM FEED & COMMUNITY LISTING ALERTS (@minthomesli) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 text-center sm:text-left">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded border border-amber-200 mb-2">
-              <Instagram className="w-3.5 h-3.5 text-amber-600" />
-              <span>Live Social & Listing Feed</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-50 border border-amber-200 mb-2">
+              <Instagram className="w-3.5 h-3.5 text-amber-700" />
+              <span>@minthomesli Updates</span>
             </div>
-            <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950">
-              Recent Updates & Listing Alerts
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-950">
+              Latest Listing Alerts & Insights
             </h2>
+            <p className="text-sm text-slate-600 mt-1">
+              Real-time property arrivals, open house announcements, and market advice from our team
+            </p>
           </div>
+
           <a
-            href="https://www.instagram.com/minthomesli"
+            href="https://www.instagram.com/minthomesli/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-amber-800 transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow"
           >
-            <span>Follow @minthomesli on Instagram</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <Instagram className="w-4 h-4" />
+            <span>Follow @minthomesli</span>
           </a>
         </div>
 
+        {/* 4 Clean Card Components using exact images & captions */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {liveUpdates.map((update) => (
+          {liveUpdates.map((item) => (
             <div
-              key={update.id}
-              className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+              key={item.id}
+              className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group"
             >
-              <div>
-                <div className="aspect-square overflow-hidden bg-slate-100 relative">
-                  <img
-                    src={update.image}
-                    alt={update.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md text-amber-400 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
-                    {update.tag}
-                  </div>
-                  <div className="absolute bottom-3 right-3 bg-slate-950/80 backdrop-blur-md text-white text-[10px] px-2 py-0.5 rounded">
-                    {update.date}
-                  </div>
-                </div>
-                <div className="p-5 space-y-2">
-                  <h4 className="font-display font-bold text-base text-slate-950 leading-snug">
-                    {update.title}
-                  </h4>
-                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
-                    {update.caption}
-                  </p>
+              <div className="relative aspect-4/3 overflow-hidden bg-slate-900">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md text-amber-400 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-amber-500/30">
+                  {item.tag}
                 </div>
               </div>
-              <div className="p-5 pt-0 border-t border-slate-100 mt-2 text-[11px] text-slate-500">
-                <div className="font-semibold text-slate-800 pt-2">{update.contacts}</div>
+
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                <div className="space-y-2">
+                  <h4 className="font-display font-bold text-base text-slate-900 leading-snug group-hover:text-amber-800 transition-colors">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                    {item.caption}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                  <div className="font-medium text-slate-800">{item.contacts}</div>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 7. REAL TESTIMONIAL PREVIEW */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-950 text-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-800 space-y-6">
-          <div className="flex items-center gap-1.5 text-amber-400 text-sm">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-            ))}
-            <span className="ml-2 font-semibold text-white">5.0 Star Client Review</span>
+      {/* 6. REAL TESTIMONIALS SECTION */}
+      <section className="bg-stone-100/70 py-16 sm:py-20 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-100 border border-amber-300">
+              <span>Client Experiences</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-950">
+              Client Testimonials
+            </h2>
+            <p className="text-sm text-slate-600">
+              Genuine feedback from families and clients who found their dream home with Mint Homes
+            </p>
           </div>
 
-          <blockquote className="font-display text-xl sm:text-2xl lg:text-3xl font-medium text-slate-100 leading-snug">
-            "{featuredTestimonial.fullReview}"
-          </blockquote>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredTestimonials.map((t) => (
+              <div
+                key={t.id}
+                className="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center gap-1 text-amber-500">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-slate-700 italic leading-relaxed">
+                    &quot;{t.quote}&quot;
+                  </p>
+                </div>
 
-          <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <div className="font-semibold text-white text-base">
-                {featuredTestimonial.author}
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <div>
+                    <div className="font-display font-bold text-slate-900 text-sm">{t.author}</div>
+                    <div className="text-xs text-slate-500">{t.role}</div>
+                  </div>
+                  <span className="text-[10px] font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                    {t.town}
+                  </span>
+                </div>
               </div>
-              <div className="text-xs text-amber-400">
-                {featuredTestimonial.role} · {featuredTestimonial.town}
-              </div>
-            </div>
+            ))}
+          </div>
 
+          <div className="text-center mt-10">
             <button
               onClick={() => onNavigate('testimonials')}
-              className="bg-amber-600 hover:bg-amber-500 text-white font-semibold text-xs px-5 py-2.5 rounded-lg transition-colors cursor-pointer self-start sm:self-auto"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider transition-all"
             >
-              Read More Client Stories
+              <span>Read All Testimonials</span>
+              <ChevronRight className="w-4 h-4 text-amber-400" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. GET IN TOUCH BANNER */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-800 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+              <span>Connect With Us</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white uppercase">
+              Get In Touch!
+            </h2>
+            <p className="text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed">
+              Whether you are preparing to buy, sell, or simply have questions about Long Island real estate values and fair housing procedures, our team is here for you.
+            </p>
+
+            <div className="space-y-2.5 pt-2 text-sm text-slate-300">
+              <div className="flex items-center gap-2.5">
+                <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>900 Rockaway Ave, Valley Stream, NY 11581, EE. UU.</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
+                <a href="tel:5169005542" className="hover:text-amber-400 transition-colors font-medium">
+                  Office: (516) 900-5542
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-amber-400 shrink-0" />
+                <a href="mailto:admin@minthomesli.com" className="hover:text-amber-400 transition-colors">
+                  admin@minthomesli.com
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 flex flex-col gap-3 sm:flex-row lg:flex-col justify-center">
+            <button
+              onClick={onOpenConsultation}
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm tracking-wide transition-all shadow-lg cursor-pointer text-center"
+            >
+              <span>Schedule Free Consultation</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => onNavigate('contact')}
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm tracking-wide transition-all border border-white/20 cursor-pointer text-center"
+            >
+              <span>Visit Contact Page</span>
+              <ArrowRight className="w-4 h-4 text-amber-400" />
             </button>
           </div>
         </div>
