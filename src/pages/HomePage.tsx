@@ -153,7 +153,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   ];
 
   return (
-    <div className="space-y-16 sm:space-y-24">
+    <div className="space-y-16 sm:space-y-24 pb-20 sm:pb-28 lg:pb-32">
       {/* 1. HERO SLIDER WITH WORKING SEARCH BAR OVERLAY */}
       <section className="relative min-h-[660px] lg:min-h-[740px] flex items-center justify-center bg-slate-950 text-white overflow-hidden">
         {/* Slider Background Images */}
@@ -338,7 +338,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-950 aspect-4/5">
               <img
-                src={ceo.photo}
+                src={ceo.photo || '/karina-prudencio.jpg'}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://static.wixstatic.com/media/24db1c_b146d9b05ff5416db985bfee6b5bc753~mv2.jpg';
+                }}
                 alt="Karina Prudencio, Mint Homes CEO"
                 className="w-full h-full object-cover object-top"
               />

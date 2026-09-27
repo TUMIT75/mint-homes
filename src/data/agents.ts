@@ -24,7 +24,7 @@ export const AGENTS_DATA: Agent[] = [
     licenseNumber: 'NYS Lic. #10491208492',
     phone: '(516) 312-4467',
     email: 'admin@minthomesli.com',
-    photo: 'https://static.wixstatic.com/media/ca7abb_2ad8a45fc5d34b62b2ae0cc3a43929eb~mv2.png',
+    photo: '/karina-prudencio.jpg',
     languages: ['English', 'Spanish'],
     specialties: ['Residential Sales', 'Title Resolution', 'Legal Compliance', 'Commercial Deals', 'Short Sale Negotiation'],
     bio: "I'm Karina Prudencio, a real estate expert with over 15 years as a paralegal and a successful career in real estate since 2007. My legal background helps me navigate complex deals, resolve title issues, and secure the best terms for you. Whether you're a first-time buyer or an investor, I'll make your real estate journey smooth and stress-free. Let's find your perfect home with Mint Homes!",

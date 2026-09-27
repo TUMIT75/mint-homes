@@ -94,44 +94,22 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
-      {/* Top Utility Bar */}
-      <div className={`bg-slate-950 text-slate-300 text-xs transition-all duration-300 ${isScrolled ? 'h-0 opacity-0 overflow-hidden py-0' : 'py-2 px-4 border-b border-slate-800/80'}`}>
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center flex-wrap justify-center sm:justify-start gap-4">
-            <span className="flex items-center gap-1.5 text-slate-300 hover:text-amber-400 transition-colors">
-              <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <span>900 Rockaway Ave, Valley Stream, NY 11581</span>
-            </span>
-            <span className="hidden md:inline text-slate-700">|</span>
-            <span className="hidden md:flex items-center gap-1.5 text-slate-400">
-              <Clock className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <span>Monday to Saturday 9:00 AM to 7:00 PM</span>
-            </span>
+      {/* Top Utility Bar - Only Location and Phone Number */}
+      <div className={`bg-slate-950 text-slate-300 text-xs transition-all duration-300 ${isScrolled ? 'h-0 opacity-0 overflow-hidden py-0' : 'py-2.5 px-4 border-b border-slate-800/80'}`}>
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          <div className="flex items-center gap-1.5 text-slate-300">
+            <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+            <span className="text-xs sm:text-sm">900 Rockaway Ave, Valley Stream, NY 11581</span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div>
             <a 
               href="tel:5169005542" 
-              className="flex items-center gap-1.5 text-slate-200 font-medium hover:text-amber-400 transition-colors"
+              className="flex items-center gap-1.5 text-slate-200 font-medium hover:text-amber-400 transition-colors text-xs sm:text-sm"
             >
-              <Phone className="w-3.5 h-3.5 text-amber-500" />
-              <span>Office: (516) 900-5542</span>
+              <Phone className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+              <span>(516) 900-5542</span>
             </a>
-            <span className="text-slate-700">|</span>
-            <a 
-              href="tel:8885921593" 
-              className="hidden lg:flex items-center gap-1.5 text-slate-300 hover:text-amber-400 transition-colors"
-            >
-              <span>Toll Free: (888) 592-1593</span>
-            </a>
-            <button 
-              onClick={onOpenCalculator}
-              className="flex items-center gap-1 text-slate-300 hover:text-amber-400 transition-colors ml-1 cursor-pointer"
-              title="Mortgage Calculator"
-            >
-              <Calculator className="w-3.5 h-3.5 text-amber-500" />
-              <span className="hidden sm:inline">Calculator</span>
-            </button>
           </div>
         </div>
       </div>
@@ -142,20 +120,16 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Brand Logo */}
           <button 
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none"
+            className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none py-1"
           >
-            <div className="w-10 h-10 rounded-lg bg-slate-950 flex items-center justify-center text-amber-400 shadow-xs group-hover:bg-slate-900 transition-colors border border-amber-500/30">
-              <span className="font-display font-bold text-xl tracking-tight text-amber-400">M</span>
-            </div>
-            <div>
-              <div className="font-display text-xl sm:text-2xl font-bold tracking-tight text-slate-950 flex items-center gap-1.5">
-                <span>MINT HOMES</span>
-                <span className="text-xs font-sans font-semibold uppercase tracking-widest text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/80">LI</span>
-              </div>
-              <p className="text-[10px] tracking-widest uppercase font-medium text-slate-500">
-                Premier Real Estate Brokerage
-              </p>
-            </div>
+            <img 
+              src="/mint-homes-logo.png"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://static.wixstatic.com/media/3518fe_89f31e0b38344815ad29158b5e487921~mv2.png/v1/crop/x_9,y_186,w_4158,h_727/fill/w_558,h_116,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3518fe_89f31e0b38344815ad29158b5e487921~mv2.png';
+              }}
+              alt="Mint Homes" 
+              className="h-9 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" 
+            />
           </button>
 
           {/* Desktop Navigation Links with Working Dropdowns */}
