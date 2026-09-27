@@ -11,7 +11,7 @@ export interface Property {
   sqft: number;
   lotSize: string;
   yearBuilt: number;
-  propertyType: 'Single Family' | 'Multi-Family' | 'Condominium' | 'Luxury Estate' | 'Townhouse';
+  propertyType: 'Single Family' | 'Multi-Family' | 'Condominium' | 'Luxury Estate' | 'Townhouse' | 'Commercial';
   status: 'Active' | 'New Listing' | 'Open House Sunday' | 'Price Improved' | 'Pending';
   openHouseTime?: string;
   tagline: string;
@@ -38,6 +38,52 @@ export interface Property {
 }
 
 export const PROPERTIES_DATA: Property[] = [
+  {
+    id: 'prop-commercial-1',
+    title: 'Spacious & Fully Renovated Restaurant Property',
+    price: 985000,
+    address: 'Rockaway Avenue Commercial Corridor',
+    town: 'Valley Stream',
+    county: 'Nassau',
+    zip: '11581',
+    beds: 0,
+    baths: 3,
+    sqft: 3400,
+    lotSize: '75 x 120 ft',
+    yearBuilt: 2021,
+    propertyType: 'Commercial',
+    status: 'New Listing',
+    tagline: 'Prime location on main road with large bar area, huge basement for storage, all equipment included.',
+    description: 'Spacious and fully renovated turnkey restaurant and commercial property in prime Valley Stream location. Features a large bar area perfect for guests and entertainment, huge full-height basement for storage and prep, and all brand-new commercial kitchen equipment included. Exceptional road visibility, easy customer access, and dedicated on-site parking.',
+    features: [
+      'All Commercial Kitchen Equipment Included',
+      'Large Custom Bar Area and Dining Room',
+      'Huge Full-Height Basement for Storage',
+      'Prime Main Road Visibility and Access',
+      'Dedicated Customer Parking'
+    ],
+    photos: [
+      'https://static.wixstatic.com/media/ca7abb_d83fed79882f4bff969bcc294d5f2b95~mv2.jpeg',
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80'
+    ],
+    taxesAnnual: 14200,
+    schools: {
+      district: 'Valley Stream Central High School District 24',
+      elementary: 'Wheeler Avenue School',
+      highSchool: 'Valley Stream Central High School'
+    },
+    coordinates: {
+      lat: 40.6640,
+      lng: -73.7050
+    },
+    agent: {
+      name: 'Nataly Fuentes',
+      phone: '(929) 282-7753',
+      email: 'natalyfuentesrealtor@gmail.com',
+      photo: 'https://static.wixstatic.com/media/24db1c_b146d9b05ff5416db985bfee6b5bc753~mv2.jpg'
+    }
+  },
   {
     id: 'prop-1',
     title: 'Expanded Colonial in Desirable Gibson Section',
@@ -82,10 +128,10 @@ export const PROPERTIES_DATA: Property[] = [
       lng: -73.7085
     },
     agent: {
-      name: 'Md "Mint" Rahman',
-      phone: '(516) 900-5542',
-      email: 'mint@minthomesli.com',
-      photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80'
+      name: 'Karina Prudencio',
+      phone: '(516) 312-4467',
+      email: 'karina@minthomesli.com',
+      photo: 'https://static.wixstatic.com/media/ca7abb_2ad8a45fc5d34b62b2ae0cc3a43929eb~mv2.png'
     }
   },
   {
@@ -131,10 +177,10 @@ export const PROPERTIES_DATA: Property[] = [
       lng: -73.6514
     },
     agent: {
-      name: 'Farhana Sultana',
-      phone: '(516) 900-5542',
-      email: 'farhana@minthomesli.com',
-      photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'
+      name: 'Nataly Fuentes',
+      phone: '(929) 282-7753',
+      email: 'natalyfuentesrealtor@gmail.com',
+      photo: 'https://static.wixstatic.com/media/24db1c_b146d9b05ff5416db985bfee6b5bc753~mv2.jpg'
     }
   },
   {
@@ -181,10 +227,10 @@ export const PROPERTIES_DATA: Property[] = [
       lng: -73.6579
     },
     agent: {
-      name: 'Carlos Mendez',
-      phone: '(516) 900-5542',
-      email: 'carlos@minthomesli.com',
-      photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
+      name: 'Judit Ramirez',
+      phone: '(516) 277-6745',
+      email: 'admin@minthomesli.com',
+      photo: 'https://static.wixstatic.com/media/a21602_884560f401dd4a2bbaf874ab0ddbbae2~mv2.jpg'
     }
   },
   {
@@ -229,10 +275,10 @@ export const PROPERTIES_DATA: Property[] = [
       lng: -73.7126
     },
     agent: {
-      name: 'Md "Mint" Rahman',
-      phone: '(516) 900-5542',
-      email: 'mint@minthomesli.com',
-      photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80'
+      name: 'Karina Prudencio',
+      phone: '(516) 312-4467',
+      email: 'karina@minthomesli.com',
+      photo: 'https://static.wixstatic.com/media/ca7abb_2ad8a45fc5d34b62b2ae0cc3a43929eb~mv2.png'
     }
   },
   {
@@ -422,10 +468,10 @@ export const PROPERTIES_DATA: Property[] = [
       lng: -73.4735
     },
     agent: {
-      name: 'David Goldberg',
-      phone: '(516) 900-5542',
-      email: 'david@minthomesli.com',
-      photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80'
+      name: 'Nataly Fuentes',
+      phone: '(929) 282-7753',
+      email: 'natalyfuentesrealtor@gmail.com',
+      photo: 'https://static.wixstatic.com/media/24db1c_b146d9b05ff5416db985bfee6b5bc753~mv2.jpg'
     }
   },
   {
@@ -518,10 +564,10 @@ export const PROPERTIES_DATA: Property[] = [
       lng: -73.7054
     },
     agent: {
-      name: 'Farhana Sultana',
-      phone: '(516) 900-5542',
-      email: 'farhana@minthomesli.com',
-      photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'
+      name: 'Nataly Fuentes',
+      phone: '(929) 282-7753',
+      email: 'natalyfuentesrealtor@gmail.com',
+      photo: 'https://static.wixstatic.com/media/24db1c_b146d9b05ff5416db985bfee6b5bc753~mv2.jpg'
     }
   },
   {
@@ -567,10 +613,10 @@ export const PROPERTIES_DATA: Property[] = [
       lng: -73.7285
     },
     agent: {
-      name: 'Carlos Mendez',
-      phone: '(516) 900-5542',
-      email: 'carlos@minthomesli.com',
-      photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
+      name: 'Judit Ramirez',
+      phone: '(516) 277-6745',
+      email: 'admin@minthomesli.com',
+      photo: 'https://static.wixstatic.com/media/a21602_884560f401dd4a2bbaf874ab0ddbbae2~mv2.jpg'
     }
   },
   {
