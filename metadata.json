@@ -1,0 +1,6 @@
+{
+  "name": "Mint Homes - Long Island Real Estate",
+  "description": "Premier real estate brokerage serving Long Island and New York. Search properties, meet licensed agents, and explore guaranteed client services in Valley Stream, Nassau, and Suffolk.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
