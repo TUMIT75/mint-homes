@@ -120,15 +120,16 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Brand Logo */}
           <button 
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none py-1"
+            className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none py-0.5"
+            aria-label="Mint Homes Home"
           >
             <img 
               src="/mint-homes-logo.png"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = 'https://static.wixstatic.com/media/3518fe_89f31e0b38344815ad29158b5e487921~mv2.png/v1/crop/x_9,y_186,w_4158,h_727/fill/w_558,h_116,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3518fe_89f31e0b38344815ad29158b5e487921~mv2.png';
+                (e.target as HTMLImageElement).src = 'https://static.wixstatic.com/media/3518fe_89f31e0b38344815ad29158b5e487921~mv2.png';
               }}
               alt="Mint Homes" 
-              className="h-9 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" 
+              className="h-10 sm:h-12 w-auto max-w-[210px] sm:max-w-[260px] object-contain transition-transform duration-200 group-hover:scale-[1.02]" 
             />
           </button>
 
@@ -367,6 +368,19 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-slate-200 shadow-xl px-4 pt-3 pb-6 animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto">
+          {/* Mobile Drawer Header with Logo */}
+          <div className="pb-3 mb-3 border-b border-slate-100 flex items-center justify-between">
+            <img 
+              src="/mint-homes-logo.png"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://static.wixstatic.com/media/3518fe_89f31e0b38344815ad29158b5e487921~mv2.png';
+              }}
+              alt="Mint Homes" 
+              className="h-8 w-auto object-contain" 
+            />
+            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Navigation</span>
+          </div>
+
           <div className="space-y-1 mb-4">
             {/* Mobile Home */}
             <button

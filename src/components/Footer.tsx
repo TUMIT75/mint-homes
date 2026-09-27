@@ -71,14 +71,14 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Brand Information */}
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center gap-3">
-            <div className="bg-white/95 rounded-xl px-3 py-1.5 inline-block shadow-sm">
+            <div className="bg-white rounded-xl px-3.5 py-2 inline-block shadow-sm">
               <img 
                 src="/mint-homes-logo.png"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://static.wixstatic.com/media/3518fe_89f31e0b38344815ad29158b5e487921~mv2.png/v1/crop/x_9,y_186,w_4158,h_727/fill/w_558,h_116,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3518fe_89f31e0b38344815ad29158b5e487921~mv2.png';
+                  (e.target as HTMLImageElement).src = 'https://static.wixstatic.com/media/3518fe_89f31e0b38344815ad29158b5e487921~mv2.png';
                 }}
                 alt="Mint Homes" 
-                className="h-7 sm:h-8 w-auto object-contain" 
+                className="h-8 sm:h-9 w-auto max-w-[200px] object-contain" 
               />
             </div>
           </div>
